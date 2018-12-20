@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../assets/bootstrap4/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/font-awesome-4.7.0/css/font-awesome.css">
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="header">
+                <h3>超市管理系统</h3>
+            </div>
+        </div>
+    </div>
+    <!-- 手风琴导航列表 -->
+    <div id="container">
+        <div id="nav">
+            <div class="container">
+                <div class="row">
+                    <div class="panel-group" id="shoufengqing">
+                        <h2 class="title">超市后台管理系统</h2>
+                        <div class="panel panel-default goods">
+                            <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div1" class="panel-heading">
+                                <h3 class="panel-title goodsadmin">商品管理
+                                    <i class="fa fa-hand-o-down"></i>
+                                    <!-- <i class="fa fa-hand-o-up"></i> -->
+                                </h3>
+                            </div>
+                            <div id="div1" class="collapse in">
+                                <div class="panel-body">
+                                    <p class="goodslist"><a href="./goodslist.html">商品列表</a></p>
+									<p class="goodsclass"><a href="./goodsclass.html">商品分类</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div2" class="panel-heading">
+                                <h3 class="panel-title useradmin">用户管理
+                                    <i class="fa fa-hand-o-down"></i>
+                                    <!-- <i class="fa fa-hand-o-up"></i> -->
+                                </h3>
+                            </div>
+                            <div id="div2" class="collapse">
+                                <div class="panel-body">
+                                    <p class="userlist"><a href="./userlist.html">用户列表</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div3" class="panel-heading">
+                                <h3 class="panel-title orderadmin">订单管理
+                                    <i class="fa fa-hand-o-down"></i>
+                                    <!-- <i class="fa fa-hand-o-up"></i> -->
+                                </h3>
+                            </div>
+                            <div id="div3" class="collapse">
+                                <div class="panel-body">
+                                    <p class="orderlist"><a href="./orderlist.html">订单列表</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <div class="container">
+                <!-- 面包屑导航 -->
+                <ul id="bread">
+                    <li><a href="#">Welcome</a></a></li>
+                    <!-- <li><a href="#">2013</a></li>
+					<li class="active">十一月</li> -->
+                </ul>
+                <div class="mainshow">
+                    <div class="panel-group">
+                        <div class="panel panel-primary">
+                            <div><input type="button" value="批量删除" class="btn btn-secondary btn-sm"/></div>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr class="success">
+                                        <th><input type="checkbox" /></th>
+                                        <th>序号</th>
+                                        <th>商品名称</th>
+                                        <th>价格</th>
+                                        <th>数量</th>
+                                        <th>运费</th>
+                                        <th>商品总额</th>
+                                        <th>订单总额</th>
+                                        <th>下单时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                 </thead>
+                                <tbody id="form">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center" id="pagelist">
+                          <!-- <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">上一页</a>
+                          </li> -->
+                          <!-- <li class="page-item"><a class="page-link" href="#">1</a></li> -->
+                          <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                          <!-- <li class="page-item">
+                            <a class="page-link" href="#">下一页</a>
+                          </li> -->
+                        </ul>
+                      </nav>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="../assets/bootstrap4/js/bootstrap.js"></script>
+        <script src="../js/order.js"></script>
+
+
+
+</body>
+
+</html>
