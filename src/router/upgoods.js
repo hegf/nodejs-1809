@@ -4,7 +4,7 @@ let myGoods = require('../mongodb/db_goods.js');
 
 // 商品修改
 Router.post('/',(req,res)=>{
-    let id = req.body._id;console.log(id);
+    let id = req.body._id;
     let {name,type,desc,price,kucun,times} = req.body;
     myGoods.update({_id:id},{name,type,desc,price,kucun,times})
     .then((data)=>{

@@ -36,7 +36,6 @@
                             <div id="div1" class="collapse in">
                                 <div class="panel-body">
                                     <p class="goodslist"><a href="./goodslist.html">商品列表</a></p>
-									<p class="goodsclass"><a href="./goodsclass.html">商品分类</a></p>
                                 </div>
                             </div>
                         </div>
@@ -68,6 +67,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="panel panel-default">
+                                <h3 class="panel-title orderadmin" style="cursor:pointer;" onclick="quit()">退出</h3>
+                                <script>
+                                    function quit(){
+                                        location.href = '../index.html';
+                                    }
+                                </script>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,25 +82,26 @@
         <div id="main">
             <div class="container">
                 <!-- 面包屑导航 -->
-                <ul id="bread">
-                    <li><a href="#">Welcome</a></a></li>
+                <!-- <ul id="bread"> -->
+                    <!-- <li><a href="#">Welcome</a></a></li> -->
                     <!-- <li><a href="#">2013</a></li>
 					<li class="active">十一月</li> -->
-                </ul>
+                <!-- </ul> -->
                 <div class="mainshow">
                     <div class="panel-group">
                         <div class="panel panel-primary">
-                            <div><input type="button" value="添加" class="btn btn-primary btn-sm"/><input type="button" value="批量删除" class="btn btn-secondary btn-sm"/></div>
-                            <table class="table table-bordered table-hover">
+                            <div><input type="button" value="添加" class="btn btn-primary btn-sm adduser"/><input type="button" value="批量删除" class="btn btn-secondary btn-sm deluser" /></div>
+                            <table class="table table-bordered table-hover" id="table">
                                 <thead>
-                                    <tr class="success">
-                                        <th><input type="checkbox" /></th>
+                                    <tr class="success ">
+                                        <th><input type="checkbox" class="all"/></th>
+                                        <th>用户ID</th>
                                         <th>用户名</th>
                                         <th>密码</th>
                                         <th>性别</th>
                                         <th>年龄</th>
                                         <th>地址</th>
-                                        <th></th>
+                                        <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody id="form">
@@ -103,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-                <nav aria-label="Page navigation example">
+                <nav aria-label="Page navigation example" class="pagetotol">
                         <ul class="pagination justify-content-center" id="pagelist">
                           <!-- <li class="page-item disabled">
                             <a class="page-link" href="#" tabindex="-1">上一页</a>
@@ -116,6 +124,7 @@
                           </li> -->
                         </ul>
                       </nav>
+        </div>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

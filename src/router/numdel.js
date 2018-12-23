@@ -4,7 +4,7 @@ let myGoods = require('../mongodb/db_goods.js');
 
 // 商品批量删除
 Router.post('/',(req,res)=>{
-    console.log(req.body.id);
+    // console.log(req.body.id);
     if(req.body.id==''){ 
         res.send({
             status:-1,

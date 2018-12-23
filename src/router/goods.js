@@ -5,8 +5,8 @@ let Router = express.Router();
 let myGoods = require('../mongodb/db_goods.js');
 
 // 创建数据
-// let data = {name:'战神',type:"电脑",desc:"X80",price:6999,kucun:456,times:(new Date()).toLocaleDateString()}
-// for(var i=0;i<3;i++){
+// let data = {name:'雅阁',type:"轿车",desc:"雅阁十代",price:17900,kucun:90,times:(new Date().toLocaleString())}
+// for(var i=0;i<2;i++){
 // myGoods.insertMany(data,(err,res)=>{
 //     if(err){console.log(err)}
 //     console.log(res)

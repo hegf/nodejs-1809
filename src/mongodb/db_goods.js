@@ -20,8 +20,8 @@ let Schema = mongoose.Schema;
  	name:{type:String,required:true},
  	type:{type:String,required:true},
  	desc:{type:String,required:true},
-   price:{type:String,required:true},
-   kucun:{type:String,required:true},
+   price:{type:Number,required:true},
+   kucun:{type:Number,required:true},
    times:{type:String,required:true},
      
  })

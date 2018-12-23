@@ -22,6 +22,6 @@ app.use(Router);
 // const Router = require('./src/router/upload.js');
 // app.use(Router);
 
-app.listen(1122,()=>{
-    console.log('server start is point'+1122)
+app.listen(2222,()=>{
+    console.log('server start is point'+2222)
 })

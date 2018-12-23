@@ -1,6 +1,6 @@
 jQuery(function ($) {
     // 商品列表
-    let current = 8;
+    let current = 5;
     let page = 1;
     $.ajax({
         type: "POST",
@@ -16,7 +16,7 @@ jQuery(function ($) {
             let data = res.data.goodslist;
             let con = $.map(data, function (item) {
                 return $(`<tr>
-                    <td><input type="checkbox"/></td>  
+                    <td><input type="checkbox" class="check"/></td>  
                     <td class="idx">${item._id}</td>  
                     <td>${item.name}</td>  
                     <td>${item.type}</td>  
@@ -40,7 +40,7 @@ jQuery(function ($) {
         data: {},
         success: function (res) {
             // console.log(res)
-            let current = 8;
+            let current = 5;
             let num = Math.ceil(Number(res.data.total) / Number(current));
             for (let i = 0; i < num; i++) {
                 $("#pagelist").append(`<li class="page-item pg">
@@ -48,10 +48,9 @@ jQuery(function ($) {
             };
         }
     });
-
     $("#pagelist").on('click', '.pg', function (e) {
         let page = $(this).text();
-        let current = 8;
+        let current = 5;
         $.ajax({
             type: "POST",
             dataType: 'json',
@@ -65,7 +64,7 @@ jQuery(function ($) {
                 let data = res.data.goodslist;
                 let con = $.map(data, function (item) {
                     return $(`<tr>
-                    <td><input type="checkbox"/></td>  
+                    <td><input type="checkbox" class="check"/></td>  
                     <td class="idx">${item._id}</td>  
                     <td>${item.name}</td>  
                     <td>${item.type}</td>  
@@ -278,10 +277,6 @@ jQuery(function ($) {
                           reader.readAsDataURL(file.files[0]);
                             }
                         
-                   
-                    
-               
-
 
                 // 点击确定将商品信息传给后端
                 $('.changeafter').on('click','#yes',function(){
@@ -364,7 +359,7 @@ jQuery(function ($) {
                     let data = res.data;
                     let con = $.map(data, function (item) {
                         return $(`<tr>
-                            <td><input type="checkbox"/></td>  
+                            <td><input type="checkbox" class="check"/></td>  
                             <td class="idx">${item._id}</td>  
                             <td>${item.name}</td>  
                             <td>${item.type}</td>  
@@ -384,12 +379,92 @@ jQuery(function ($) {
 
     //点击全选
     $('#table').on('click','.all',function(){
-        console.log(6666)
-        if($('.all').is(':checked')){
-            $('#table').find('input:checkbox').not('.all').attr('checked',true);
-        }else{
-            $('#table').find('input:checkbox').not('.all').attr('checked',false);
+        selectAll()
+        function selectAll(){ 
+            // console.log(1);
+            // console.log($(".all").prop("checked"));
+            if ($(".all").prop("checked")) { 
+                // console.log(2);           
+                $("input[type='checkbox']").prop("checked",true);//全选
+            } else { 
+                // console.log(3);               
+                $("input[type='checkbox']").prop("checked",false);  //取消全选     
+            }  
+        };
+    });
+    $('#table').on('click','.check',function(){
+        if($(this).attr('checked',false)){
+            if($('.all').attr("checked",true)){
+            $('#table').find('.all').attr("checked",false);} 
         }
+    });
+
+    // 价格排序
+    // 降序
+    $('#table').on('click','.down',function(){
+        let current = 5;
+        let page = 1;
+        $.ajax({
+            type: "get",
+            dataType: "json",
+            async:false,
+            url: '/sort/down',
+            data: { 
+                current,page   
+            },
+            success:function(res){
+                let data = res.data;
+                let con = $.map(data, function (item) {
+                    return $(`<tr>
+                        <td><input type="checkbox" class="check"/></td>  
+                        <td class="idx">${item._id}</td>  
+                        <td>${item.name}</td>  
+                        <td>${item.type}</td>  
+                        <td>${item.price}</td>  
+                        <td>${item.desc}</td> 
+                        <td>${item.kucun}</td> 
+                        <td>${item.times}</td> 
+                        <td><input type="button" value="修改" class="btn btn-primary btn-sm change" id="change"/><input type="button" value="删除" class="btn btn-secondary btn-sm" id="del"/></td>
+                        </tr>`);
+                });
+                $('#form').html(con);
+            }
+        })    
+
+    });
+
+    // 升序
+    $('#table').on('click','.up',function(){
+        let current = 5;
+        let page = 1;
+        $.ajax({
+            type: "get",
+            dataType: "json",
+            async:false,
+            url: '/sort/up',
+            data: { 
+                current,page   
+            },
+            success:function(res){
+                let data = res.data;
+                let con = $.map(data, function (item) {
+                    return $(`<tr>
+                        <td><input type="checkbox" class="check"/></td>  
+                        <td class="idx">${item._id}</td>  
+                        <td>${item.name}</td>  
+                        <td>${item.type}</td>  
+                        <td>${item.price}</td>  
+                        <td>${item.desc}</td> 
+                        <td>${item.kucun}</td> 
+                        <td>${item.times}</td> 
+                        <td><input type="button" value="修改" class="btn btn-primary btn-sm change" id="change"/><input type="button" value="删除" class="btn btn-secondary btn-sm" id="del"/></td>
+                        </tr>`);
+                });
+                $('#form').html(con);
+            }
+        })    
+
     })
+
     
 });

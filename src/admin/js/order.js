@@ -1,6 +1,6 @@
 jQuery(function ($) {
     // 商品列表
-    let current = 8;
+    let current = 5;
     let page = 1;
     $.ajax({
         type: "POST",
@@ -11,12 +11,12 @@ jQuery(function ($) {
             page
         },
         success: function (res){
-            console.log(res);
+            // console.log(res);
             let data = res.data.goodslist;
             let con =  $.map(data,function(item,index){
                return  $(`<tr>
                     <td><input type="checkbox"/></td> 
-                    <td>${index+1}</td>  
+                    <td class="idx">${item._id}</td>  
                     <td>${item.name}</td>    
                     <td>${item.price}</td>  
                     <td>${Math.floor(Math.random()*10)}</td>
@@ -24,7 +24,7 @@ jQuery(function ($) {
                     <td>${item.price*Math.floor(Math.random()*10)}</td>
                     <td>${(item.price*Math.floor(Math.random()*10))+(Math.floor(Math.random()*20))}</td>
                     <td>${item.times}</td> 
-                    <td><input type="button" value="删除" class="btn btn-secondary btn-sm"/></td>
+                    <td><input type="button" value="删除" class="btn btn-secondary btn-sm del"/></td>
                     </tr>`);   
                 });
             $('#form').html(con)
@@ -38,7 +38,7 @@ jQuery(function ($) {
         url: '/orderlist',//"http:127.0.0.1:1122/goodslist"
         data: {},
         success: function (res){
-            console.log(res)
+            // console.log(res)
             let current = 8;
             let num = Math.ceil(Number(res.data.total)/Number(current));
            for(let i=0;i<num;i++){
@@ -48,9 +48,9 @@ jQuery(function ($) {
         }
     });
 
-    $("#pagelist").on('click','.pg',function(e){
+    $("#form").on('click','.pg',function(e){
     let page = $(this).text();
-    let current = 8;
+    let current = 5;
         $.ajax({
             type: "POST",
             dataType: 'json',
@@ -65,7 +65,7 @@ jQuery(function ($) {
                 let con =  $.map(data,function(item){
                    return  $(`<tr>
                    <td><input type="checkbox"/></td> 
-                   <td>${index+1}</td>  
+                   <td class="idx">${item._id}</td>  
                    <td>${item.name}</td>    
                    <td>${item.price}</td>  
                    <td>${Math.floor(Math.random()*10)}</td>
@@ -73,13 +73,73 @@ jQuery(function ($) {
                    <td>${item.price*Math.floor(Math.random()*10)}</td>
                    <td>${(item.price*Math.floor(Math.random()*10))+(Math.floor(Math.random()*20))}</td>
                    <td>${item.times}</td> 
-                   <td><input type="button" value="删除" class="btn btn-secondary btn-sm"/></td>
+                   <td><input type="button" value="删除" class="btn btn-secondary btn-sm del"/></td>
                    </tr>`);   
                     });
                 $('#form').html(con);
             }
         })
 
-    })
+    });
     
+    // 删除
+    $('.mainshow').on('click','.del',function(){
+        if (window.confirm('确认删除')) {
+        let $tr = $(this).parent().parent();
+        let idx = $tr.find('.idx').text();console.log(idx)
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: '/orderlist/onedel',//"http:127.0.0.1:1122/goodslist"
+            data: {
+               idx
+            },
+            success: function (res){
+                console.log(res)
+                if (res.status == 1) {
+                    location.replace(location);
+                }
+                if (res.status != 1) {
+                    alert('删除失败:' + data.err);
+                    return;
+                };
+            }
+        })}
+    });
+
+    // 批量删除
+    $('.mainshow').on('click','.all',function(){
+        $total = $(this).parent().parent();
+        $delAall = $total.find("input[type=checkbox]:checked").not('.all');
+        $tr = $delAall.parent().parent().find('.idx');       
+        let arr =[];
+        $.each($tr,function(index,val){
+            arr.push(val)
+        });
+        // console.log(arr)
+        if(arr!=''){
+            if(window.confirm('确认删除')){
+                let item = arr.map(function(item){
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: '/orderlist/numdel',
+                        data: {
+                            id:item.innerText
+                            },
+                        success:function(res){
+                            // console.log(res)
+                            if(res.status == 1){
+                                location.replace(location);
+                            }else{
+                                alert('删除失败:'+res.err);
+                                return; 
+                            }
+                        }   
+                    })
+                })
+            }};
+        
+    })
+
 });

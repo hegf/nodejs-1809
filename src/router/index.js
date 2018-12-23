@@ -13,6 +13,8 @@ const numdelRouter = require('./numdel.js');
 const searchRouter = require('./search.js');
 const loginRouter = require('./login.js');
 const uploadRouter = require('./upload.js');
+const sortRouter = require('./goodssort.js');
+const orderdelRouter = require('./orderdel.js');
 
 let Router = express.Router();
 
@@ -28,10 +30,12 @@ Router.use('/onedel',onedelRouter);//单个删除
 Router.use('/addgoods',addgoodsRouter);//添加商品
 Router.use('/numdel',numdelRouter);//批量删除
 Router.use('/search',searchRouter);//模糊查询
+Router.use('/sort',sortRouter);//模糊查询
 
 // 关于订单的路由
 Router.use('/orderlist',orderRouter);//订单列表
+Router.use('/orderdel',orderdelRouter);//订单删除
 
-Router.use('/addpics',uploadRouter);
+Router.use('/addpics',uploadRouter);//图片上传
 
 module.exports = Router;

@@ -36,7 +36,6 @@
                             <div id="div1" class="collapse in">
                                 <div class="panel-body">
                                     <p class="goodslist"><a href="./goodslist.html">商品列表</a></p>
-									<p class="goodsclass"><a href="./goodsclass.html">商品分类</a></p>
                                 </div>
                             </div>
                         </div>
@@ -68,22 +67,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="panel panel-default">
+                                <h3 class="panel-title orderadmin" style="cursor:pointer;" onclick="quit()">退出</h3>
+                                <script>
+                                    function quit(){
+                                        location.href = '../index.html';
+                                    }
+                                </script>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div id="main">
             <div class="container">
-                <!-- 面包屑导航 -->
-                <ul id="bread">
-                    <li><a href="#">Welcome</a></a></li>
-                    <!-- <li><a href="#">2013</a></li>
-					<li class="active">十一月</li> -->
-                </ul>
                 <div class="mainshow">
                     <div class="panel-group">
                         <div class="panel panel-primary">
-                            <div><input type="button" value="批量删除" class="btn btn-secondary btn-sm"/></div>
+                            <div><input type="button" value="批量删除" class="btn btn-secondary btn-sm all"/></div>
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr class="success">

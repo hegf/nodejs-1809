@@ -21,7 +21,7 @@ let userSchema = new Schema({
     name:{type:String,required:true},
     password:{type:String,required:true},
     gender:{type:String,required:true},
-    ege:{type:String,required:true},
+    ege:{type:Number,required:true},
     adress:{type:String,required:true}
 
 })

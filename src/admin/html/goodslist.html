@@ -32,7 +32,7 @@
                         <h2 class="title">超市后台管理系统</h2>
                         <div class="panel panel-default goods">
                             <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div1" class="panel-heading">
-                                <h3 class="panel-title goodsadmin">商品管理
+                                <h3 class="panel-title goodsadmin" style="cursor:pointer;">商品管理
                                     <i class="fa fa-hand-o-down"></i>
                                     <!-- <i class="fa fa-hand-o-up"></i> -->
                                 </h3>
@@ -40,14 +40,13 @@
                             <div id="div1" class="collapse in">
                                 <div class="panel-body">
                                     <p class="goodslist"><a href="./goodslist.html">商品列表</a></p>
-									<p class="goodsclass"><a href="./goodsclass.html">商品分类</a></p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="panel panel-default">
                             <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div2" class="panel-heading">
-                                <h3 class="panel-title useradmin">用户管理
+                                <h3 class="panel-title useradmin" style="cursor:pointer;">用户管理
                                     <i class="fa fa-hand-o-down"></i>
                                     <!-- <i class="fa fa-hand-o-up"></i> -->
                                 </h3>
@@ -61,7 +60,7 @@
 
                         <div class="panel panel-default">
                             <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div3" class="panel-heading">
-                                <h3 class="panel-title orderadmin">订单管理
+                                <h3 class="panel-title orderadmin" style="cursor:pointer;">订单管理
                                     <i class="fa fa-hand-o-down"></i>
                                     <!-- <i class="fa fa-hand-o-up"></i> -->
                                 </h3>
@@ -72,18 +71,25 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="panel panel-default">
+                                <h3 class="panel-title orderadmin" style="cursor:pointer;" onclick="quit()">退出</h3>
+                                <script>
+                                    function quit(){
+                                        location.href = '../index.html';
+                                    }
+                                </script>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div id="main">
+                <!-- <ul id="bread" style="margin:0;padding:0;">
+                    <li><a href="#">Welcome</a></li>
+                    <li><a href="#">2013</a></li>
+					<li class="active">十一月</li>
+                    </ul> -->
             <div class="container">
-                <!-- 面包屑导航 -->
-                <ul id="bread">
-                    <li><a href="#">Welcome</a></a></li>
-                    <!-- <li><a href="#">2013</a></li>
-					<li class="active">十一月</li> -->
-                </ul>
                 <div class="changeafter">
                 <div class="mainshow">
                     <div class="panel-group">
@@ -100,7 +106,7 @@
                                         <th>商品ID</th>
                                         <th>商品名称</th>
                                         <th>商品类型</th>
-                                        <th>商品价格</th>
+                                        <th style="padding:15px 0;">商品价格<i class="fa fa-hand-o-down down" aria-hidden="true" style="cursor:pointer"></i><i class="fa fa-hand-o-up up" aria-hidden="true" style="cursor:pointer"></i></th>
                                         <th>商品说明</th>
                                         <th>库存量</th>
                                         <th>入库时间</th>
