@@ -8,7 +8,7 @@ Router.post('/',(req,res)=>{
     if(con == ''){
         return;
     }
-    myGoods.find({$or:[{name:{$regex:con}},{type:{$regex:con}},{desc:{$regex:con}},{price:{$regex:con}},{kucun:{$regex:con}}]})
+    myGoods.find({$or:[{name:{$regex:con}},{type:{$regex:con}},{desc:{$regex:con}}]}) //{price:{$regex:con}}  {kucun:{$regex:con}}
     .then((data)=>{
         res.send({
             status:1,

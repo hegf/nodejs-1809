@@ -140,6 +140,24 @@ jQuery(function ($) {
                 })
             }};
         
-    })
+    });
+
+    // 全选与复选
+    $('.mainshow').on('click', '.allcheck', function () {
+        // console.log(666);
+        selectAll()
+
+        function selectAll() {
+            // console.log(1);
+            // console.log($(".all").prop("checked"));
+            if ($(".allcheck").prop("checked")) {
+                // console.log(2);           
+                $("input[type='checkbox']").prop("checked", true); //全选
+            } else {
+                // console.log(3);               
+                $("input[type='checkbox']").prop("checked", false); //取消全选     
+            }
+        };
+    });
 
 });
